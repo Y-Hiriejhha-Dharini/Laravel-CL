@@ -72,7 +72,7 @@ class TransactionController extends Controller
         $po = DB::table('purchase_orders')
             ->join('purchase_order_products', 'purchase_orders.id', '=', 'purchase_order_products.poid')
             ->select('purchase_orders.region', 'purchase_orders.territory', 'purchase_orders.distributor', 'purchase_orders.date', 'purchase_orders.time', 'purchase_orders.ponumber', 'purchase_order_products.totalamount')
-            ->first();
+            ->get();
 
         return view('poview', ['po' => $po, 'zone' => $zone, 'region' => $region, 'territory' => $territory, 'distributor' => $distributor]);
     }
