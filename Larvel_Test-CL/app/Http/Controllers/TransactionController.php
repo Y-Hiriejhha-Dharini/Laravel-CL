@@ -56,7 +56,11 @@ class TransactionController extends Controller
 
         $pop->save();
 
-        return view('/home')->with('status', 'Product Successfully Inserted');
+        if (session('user')['role'] == 'admin') {
+            return redirect('/home')->with('status', 'Product Successfully Inserted');
+        } else {
+            return redirect('/home_dist')->with('status', 'Product Successfully Inserted');
+        }
     }
     function poviewform()
     {

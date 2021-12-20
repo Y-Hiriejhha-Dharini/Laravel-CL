@@ -21,9 +21,9 @@ class RegionController extends Controller
         $data = new Region();
         $id = Region::max('id') + 1;
         $padding = Str::padLeft($id, 5, '0');
-        $data->skuid = "R" . $padding;
+        $data->regioncode = "R" . $padding;
         $data->zonecode = $request->zonecode;
-        $data->regioncode = $request->regioncode;
+        //$data->regioncode = $request->regioncode;
         $data->regionname = $request->regionname;
         $data->status = "active";
         $data->save();

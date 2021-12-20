@@ -23,10 +23,10 @@ class TerriotoryController extends Controller
         $data = new Terriotory();
         $id = Terriotory::max('id') + 1;
         $padding = Str::padLeft($id, 5, '0');
-        $data->skuid = "T" . $padding;
+        $data->territorycode = "T" . $padding;
         $data->zonecode = $request->zonecode;
         $data->regioncode = $request->regioncode;
-        $data->territorycode = $request->territorycode;
+        //$data->territorycode = $request->territorycode;
         $data->territoryname = $request->territoryname;
         $data->status = "active";
         $data->save();

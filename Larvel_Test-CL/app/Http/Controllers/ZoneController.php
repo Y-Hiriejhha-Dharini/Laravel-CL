@@ -18,8 +18,8 @@ class ZoneController extends Controller
         $data = new zone();
         $id = zone::max('id') + 1;
         $padding = Str::padLeft($id, 5, '0');
-        $data->skuid = "Z" . $padding;
-        $data->zonecode = $request->zonecode;
+        $data->zonecode = "Z" . $padding;
+        //$data->zonecode = $request->zonecode;
         $data->zoneldesc = $request->zoneldesc;
         $data->zonesdesc = $request->zonesdesc;
         $data->status = "active";

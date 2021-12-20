@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|max:256',
-            'nic' => 'min:12',
+            'nic' => 'min:10',
         ]);
         $data = new User();
         $data->name = $request->name;
