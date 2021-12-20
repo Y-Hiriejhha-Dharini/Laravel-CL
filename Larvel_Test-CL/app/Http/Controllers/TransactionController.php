@@ -73,7 +73,7 @@ class TransactionController extends Controller
             ->join('purchase_order_products', 'purchase_orders.id', '=', 'purchase_order_products.poid')
             ->select('purchase_orders.region', 'purchase_orders.territory', 'purchase_orders.distributor', 'purchase_orders.date', 'purchase_orders.time', 'purchase_orders.ponumber', 'purchase_order_products.totalamount')
             ->first();
-        //dd($region);
+
         return view('poview', ['po' => $po, 'zone' => $zone, 'region' => $region, 'territory' => $territory, 'distributor' => $distributor]);
     }
     function exportExcel(Request $request)
@@ -91,33 +91,34 @@ class TransactionController extends Controller
             "Expires"             => "0"
         );
 
-        //$columns = array('Region', 'Territory', 'Distributor', 'Po Number', 'Date', 'Time', 'Total Amount');
+        $columns = array('Region', 'Territory', 'Distributor', 'Po Number', 'Date', 'Time', 'Total Amount');
 
-        /*$callback = function () use ($tasks, $columns) {
-            $file = fopen('php://output', 'w');*/
-        //fputcsv($file, $columns);
-        $column = '';
-        $column .= "Region, Territory, Distributor, Po Number, Date, Time, Total Amount\r\n";
-        foreach ($tasks as $task) {
-            $row['Region']  = $task->region;
-            $row['Territory']    = $task->territory;
-            $row['Distributor']    = $task->distributor;
-            $row['Po Number']  = $task->ponumber;
-            $row['Date']  = $task->date;
-            $row['Time']  = $task->time;
-            $row['Total Amount']  = $task->totalamount;
+        $callback = function () use ($tasks, $columns) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+            $column = '';
+            $column .= "Region, Territory, Distributor, Po Number, Date, Time, Total Amount\r\n";
 
-            $column .=  $task->region . "," . $task->territory . "," . $task->distributor . "," . $task->ponumber . "," . $task->date . "," . $task->time . "," . $task->totalamount . "/r/n";
+            foreach ($tasks as $task) {
+                $row['Region']  = $task->region;
+                $row['Territory']    = $task->territory;
+                $row['Distributor']    = $task->distributor;
+                $row['Po Number']  = $task->ponumber;
+                $row['Date']  = $task->date;
+                $row['Time']  = $task->time;
+                $row['Total Amount']  = $task->totalamount;
 
-            //fputcsv($file, array($row['Region'], $row['Territory'], $row['Distributor'], $row['Po Number'], $row['Date'], $row['Time'], $row['Total Amount']));
-        }
-        echo $column;
-        exit;
+                $column .=  $task->region . "," . $task->territory . "," . $task->distributor . "," . $task->ponumber . "," . $task->date . "," . $task->time . "," . $task->totalamount . "/r/n";
 
-        //fclose($file);
-        //};
+                fputcsv($file, array($task->region, $task->territory, $task->distributor, $task->ponumber, $task->date, $task->time, $task->totalamount));
+            }
+            // echo $column;
+            // exit;
 
-        //return response()->stream($callback, 200, $headers);
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
     }
     function search(Request $request)
     {
