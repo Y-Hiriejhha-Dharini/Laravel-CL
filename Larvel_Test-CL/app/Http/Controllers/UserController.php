@@ -28,6 +28,7 @@ class UserController extends Controller
         $data->address = $request->address;
         $data->mobile = $request->mobile;
         $data->email = $request->email;
+        $data->role = $request->role;
         $data->gender = $request->gender;
         $data->territorycode = $request->territorycode;
         $data->username = $request->username;
@@ -55,6 +56,7 @@ class UserController extends Controller
         $data->address = $request->address;
         $data->mobile = $request->mobile;
         $data->email = $request->email;
+        $data->role = $request->role;
         $data->gender = $request->gender;
         $data->territorycode = $request->territorycode;
         $data->username = $request->username;

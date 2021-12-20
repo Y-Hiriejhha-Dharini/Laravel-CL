@@ -44,10 +44,21 @@
             </div>
         </div>
         <div class="dropdown form-group row my-2 mx-auto">
+            <label for="role" class="col-sm-5 col-form-label label">Role<span class="text-light">*</span></label>
+            <div class="col-sm-2">
+                <select class="form-select drop" name="role" aria-label="Default select example">
+                    <option value="null">Select</option>
+                    <option value="admin">Admin</option>
+                    <option value="distributor">Distributor</option>
+                    <option value="user">User</option>
+                </select>
+            </div>
+        </div>
+        <div class="dropdown form-group row my-2 mx-auto">
             <label for="gender" class="col-sm-5 col-form-label label">Gender<span class="text-light">*</span></label>
             <div class="col-sm-2">
                 <select class="form-select drop" name="gender" aria-label="Default select example">
-                    <option selected>Select</option>
+                    <option value="null">Select</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="other">Other</option>
