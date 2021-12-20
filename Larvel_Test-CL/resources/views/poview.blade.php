@@ -57,10 +57,10 @@
 
                         <td><input class="form-control" type="text" name="region" value="{{$po->region}}"></td>
                         <td><input class="form-control" type="text" name="territory" value="{{$po->territory}}"></td>
-                        <td><input class="form-control" type="text" name="ponumber" value="{{$po->ponumber}}"></td>
-                        <td><input class="form-control" type="text" name="date" value="{{$po->date}}"></td>
-                        <td><input class="form-control" type="text" name="time" value="{{$po->time}}"></td>
-                        <td><input class="form-control" type="text" name="distributor" value="{{$po->distributor}}"></td>
+                        <td><input class="form-control" type="text" name="ponumber" value="{{$po->distributor}}"></td>
+                        <td><input class="form-control" type="text" name="date" value="{{$po->ponumber}}"></td>
+                        <td><input class="form-control" type="text" name="time" value="{{$po->date}}"></td>
+                        <td><input class="form-control" type="text" name="distributor" value="{{$po->time}}"></td>
                         <td><input class="form-control" type="text" name="totalamount" value="{{$po->totalamount}}"></td>
                         <td><span data-href="toexcel" id="export" class="form-control btn btn-success" onclick="exportTasks(event.target);">VIEW PO</span></td>
                     </tr>
